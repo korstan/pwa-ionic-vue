@@ -19,6 +19,10 @@ const router = new IonicVueRouter({
   mode: 'history',
   routes: [
     {
+      path: '*',
+      redirect: '/',
+    },
+    {
       path: '/login',
       name: 'login',
       component: AppSignPage,
@@ -28,6 +32,9 @@ const router = new IonicVueRouter({
       name: 'home',
       component: AppHomePage,
       redirect: '/tasks',
+      meta: {
+        requiresAuth: true,
+      },
       children: [
         {
           path: 'tasks',
@@ -81,11 +88,17 @@ const router = new IonicVueRouter({
         },
       ],
     },
-    {
-      path: '*',
-      redirect: '/',
-    },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const loggedIn = !!localStorage.getItem('loggedIn');
+
+  if (requiresAuth && !loggedIn) next('/login');
+  else if (!requiresAuth && loggedIn) next('/');
+  else next();
+});
+
 
 export default router;

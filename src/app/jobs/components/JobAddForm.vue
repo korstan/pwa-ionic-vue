@@ -6,24 +6,18 @@
     <MicFloatButton />
     <ion-item>
       <ion-label color="medium">
-        <strong> Task </strong> {{ task.title }} <br>
-        <strong> Task ID </strong> {{ task.taskID }}
+        <strong> Task </strong> [taskTitle] <br>
+        <strong> Task ID </strong> [taskId]
       </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Billable</ion-label>
-      <ion-checkbox
-        :value="billable"
-        @ionChange="billable=$event.target.checked"
-        slot="start"
-      ></ion-checkbox>
+      <ion-checkbox slot="start"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>Work Day</ion-label>
       <ion-datetime
         min="2007-01-01"
-        :value="workDay"
-        @ionChange="workDay = $event.target.value"
       ></ion-datetime>
     </ion-item>
     <ion-item>
@@ -33,13 +27,9 @@
       >Duration</ion-label>
       <ion-datetime
         display-format="HH:mm"
-        :value="duration"
-        @ionChange="duration = $event.target.value"
       ></ion-datetime>
     </ion-item>
     <ion-textarea
-      :value="jobText"
-      @input="jobText = $event.target.value"
       name="jobTextarea"
       rows="10"
       maxlength="1024"
@@ -74,11 +64,6 @@ export default {
   },
   subscriptions: {},
   methods: {
-    getDurationInMinutes(isoString) {
-      return (
-        new Date(isoString).getMinutes() + new Date(isoString).getHours() * 60
-      );
-    },
     onSubmitJob(e) {
       e.preventDefault();
       axios

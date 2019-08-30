@@ -43,7 +43,11 @@ export default {
     onSubmitReport(e) {
       e.preventDefault();
       axios
-        .post('', {});
+        .post('', {})
+        .then(() => this.$router.go(-1))
+        .catch((error) => {
+          this.presentSubmitReportAlert(error);
+        });
     },
     presentSubmitReportAlert(message) {
       return this.$ionic.alertController

@@ -2,7 +2,7 @@
   <div class="ion-page">
     <ion-content>
       <ion-list>
-        <TasksSelectBar @showModeChanged="fetchTasksByMode" />
+        <TasksSelectBar />
         <TaskItem
           @taskItemClick="routeToTaskById(1)"
         />

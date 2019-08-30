@@ -2,10 +2,10 @@
   <div class="ion-page">
     <ion-content>
       <ion-list>
-        <JobItem
+        <JobItem @jobItemClick="routeToJobById(1)"
         />
       </ion-list>
-      <AddFloatButton/>
+      <AddFloatButton @addBtnClick="presentAddGuideAlert"/>
     </ion-content>
   </div>
 </template>

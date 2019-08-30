@@ -2,7 +2,7 @@
   <ion-grid fixed>
     <form
       action=""
-      @submit.prevent="$router.push('/')"
+      @submit.prevent="signIn"
     >
       <ion-col>
         <ion-item>
@@ -48,6 +48,12 @@ export default {
         password: '',
       },
     };
+  },
+  methods: {
+    signIn() {
+      localStorage.setItem('loggedIn', true);
+      this.$router.push('/');
+    },
   },
 };
 </script>

@@ -55,6 +55,7 @@ export default {
         .then(() => this.$router.push(routePath));
     },
     signOutAndExit() {
+      localStorage.removeItem('loggedIn');
       this.$ionic.menuController
         .close()
         .then(() => this.$router.push('/login'));

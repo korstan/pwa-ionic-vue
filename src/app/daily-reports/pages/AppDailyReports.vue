@@ -4,11 +4,7 @@
     <ion-content>
       <ion-list>
         <DailyReportItem
-          v-for="report in reports"
-          :key="report.dailyReportID"
-          :text="report.text"
-          :date="report.date"
-          @reportItemClick="routeToReportById(report.dailyReportID)"
+          @reportItemClick="routeToReportById(1)"
         />
       </ion-list>
     </ion-content>
@@ -19,7 +15,6 @@
 import { mapActions } from 'vuex';
 import AddFloatButton from '@/components/AddFloatButton.vue';
 import DailyReportItem from '@/app/daily-reports/components/DailyReportItem.vue';
-
 
 export default {
   name: 'AppDailyReport',
